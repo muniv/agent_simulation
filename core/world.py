@@ -18,41 +18,40 @@ class SimulationWorld:
             # 현재 컨텍스트 생성
             context = self._get_current_context()
             
-            # 한 턴에서 모든 에이전트의 생각을 먼저 처리
-            thoughts = {}
-            for agent in self.agents:
-                thoughts[agent.name] = agent.think(context)
-            
-            # 그 다음 모든 에이전트의 대화/행동을 순차적으로 처리
             for i, agent in enumerate(self.agents):
-                # 현재 에이전트의 생각 출력
-                print(f"🤔 {agent.name}의 생각:")
-                print(f"   {thoughts[agent.name]}")
-                
                 # 이전 에이전트의 대화/행동을 컨텍스트에 추가
                 if i > 0:
                     context = self._update_context_with_last_interaction(context)
                 
-                # 홀수 턴에는 대화, 짝수 턴에는 행동
-                if self.turn % 2 == 0:
-                    interaction = agent.speak(context)
-                    interaction_type = 'speech'
+                # 각 에이전트의 생각, 대화, 행동을 시뮬레이션
+                interaction_data = {
+                    'turn': self.turn + 1,
+                    'agent': agent.name
+                }
+                
+                # 생각 생성 및 저장
+                thought = agent.think(context)
+                if thought.strip():  # 생각이 비어있지 않은 경우만
+                    interaction_data['thought'] = thought
+                    print(f"🤔 {agent.name}의 생각:")
+                    print(f"   {thought}")
+                
+                # 대화 생성 및 저장
+                speech = agent.speak(context)
+                if speech.strip():  # 대화가 비어있지 않은 경우만
+                    interaction_data['speech'] = speech
                     print(f"\n💭 {agent.name}의 대화:")
-                    print(f"   \"{interaction}\"")
-                else:
-                    interaction = agent.act(context)
-                    interaction_type = 'action'
+                    print(f"   \"{speech}\"")
+                
+                # 행동 생성 및 저장
+                action = agent.act(context)
+                if action.strip():  # 행동이 비어있지 않은 경우만
+                    interaction_data['action'] = action
                     print(f"\n👥 {agent.name}의 행동:")
-                    print(f"   {interaction}")
+                    print(f"   {action}")
                 
                 # 결과 저장
-                self.conversation_history.append({
-                    'turn': self.turn + 1,
-                    'agent': agent.name,
-                    'thought': thoughts[agent.name],
-                    interaction_type: interaction
-                })
-                
+                self.conversation_history.append(interaction_data)
                 print("-" * 50)
     
     def _update_context_with_last_interaction(self, context: str) -> str:
