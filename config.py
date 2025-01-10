@@ -10,7 +10,7 @@ OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', 'your-default-api-key-here')
 openai.api_key = OPENAI_API_KEY
 
 # 기타 설정들
-DEFAULT_MODEL = "gpt-4o"
+DEFAULT_MODEL = "gpt-4o-mini" # gpt-4o
 DEFAULT_TEMPERATURE = 0.7
 
 # API 키 확인
