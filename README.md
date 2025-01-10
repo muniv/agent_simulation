@@ -49,6 +49,7 @@ python3 -m mbti_simulation.examples.emergency_meeting
 - `family_dinner.py`: 가족 저녁 식사 시나리오
 - `historical_meeting.py`: 역사적 회담 시나리오
 - `cafe_meeting.py`: 카페 소개팅 시나리오
+- `escape_room.py`: 방탈출 협동 게임 시나리오 (추천!)
 
 ## 🎨 새로운 시나리오 만들기
 
