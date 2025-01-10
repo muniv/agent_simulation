@@ -2,8 +2,8 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
-from mbti_simulation.core.agent import MBTIAgent
-from mbti_simulation.core.world import SimulationWorld
+from agent_simulation.core.agent import MBTIAgent
+from agent_simulation.core.world import SimulationWorld
 
 # MBTI 에이전트 생성
 isfj_mom = MBTIAgent(

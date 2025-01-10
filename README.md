@@ -38,10 +38,10 @@ OPENAI_API_KEY=your-api-key-here
 ### 기본 예제 실행
 ```bash
 # Windows
-python -m mbti_simulation.examples.emergency_meeting
+python -m examples.emergency_meeting
 
 # macOS/Linux
-python3 -m mbti_simulation.examples.emergency_meeting
+python3 -m examples.emergency_meeting
 ```
 
 ### 사용 가능한 예제들
@@ -61,8 +61,8 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
-from mbti_simulation.core.agent import MBTIAgent
-from mbti_simulation.core.world import SimulationWorld
+from agent_simulation.core.agent import MBTIAgent
+from agent_simulation.core.world import SimulationWorld
 
 # 에이전트 생성
 agent1 = MBTIAgent(
