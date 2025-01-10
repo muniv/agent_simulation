@@ -31,24 +31,24 @@ class SimulationWorld:
                 
                 # 생각 생성 및 저장
                 thought = agent.think(context)
-                if thought.strip():  # 생각이 비어있지 않은 경우만
+                if thought.strip():
                     interaction_data['thought'] = thought
                     print(f"🤔 {agent.name}의 생각:")
-                    print(f"   {thought}")
+                    print(f"   {thought}\n")
                 
                 # 대화 생성 및 저장
                 speech = agent.speak(context)
-                if speech.strip():  # 대화가 비어있지 않은 경우만
+                if speech.strip():
                     interaction_data['speech'] = speech
-                    print(f"\n💭 {agent.name}의 대화:")
-                    print(f"   \"{speech}\"")
+                    print(f"💭 {agent.name}의 대화:")
+                    print(f"   \"{speech}\"\n")
                 
                 # 행동 생성 및 저장
                 action = agent.act(context)
-                if action.strip():  # 행동이 비어있지 않은 경우만
+                if action.strip():
                     interaction_data['action'] = action
-                    print(f"\n👥 {agent.name}의 행동:")
-                    print(f"   {action}")
+                    print(f"👥 {agent.name}의 행동:")
+                    print(f"   {action}\n")
                 
                 # 결과 저장
                 self.conversation_history.append(interaction_data)
