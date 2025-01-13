@@ -1,6 +1,11 @@
 # examples/cafe_meeting.py
 import os
 import sys
+from dotenv import load_dotenv
+
+# .env 파일 로드
+load_dotenv()
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
 from agent_simulation.core.agent import MBTIAgent
